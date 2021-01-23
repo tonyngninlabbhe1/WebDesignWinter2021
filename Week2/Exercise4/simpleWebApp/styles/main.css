@@ -1,0 +1,35 @@
+#first-section{
+    font-size: 16pt;
+    color: blue
+}
+
+#second-section{
+    font-size: 16pt;
+    color:greenyellow
+}
+#third-section{
+    font-size: 16pt;
+    color:purple
+}
+
+
+p {
+    color: red;
+    text-align: center;
+}
+
+a {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.links {
+    background-color: lightgray;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+span {
+    padding-right: 20px;
+}
