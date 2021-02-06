@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>login</title>
+        <!--removeIf(production)-->
+        <script src='scripts/login.js'></script>
+        <!--endRemoveIf(production)-->
+        
+        <!-- inject:js -->
+        <!-- endinject -->
+    </head>
+<body>
+
+    <form action="">
+        <div class="form-entry">
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username"><br>
+            <span id='username-error' class='error-msg' style='visibility:hidden'>Please enter a username.</span>
+        </div>
+
+        <div class="form-entry">
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <span id='password-error' class='error-msg' style='visibility:hidden'>Please enter a password.</span>
+        </div>
+        
+        <div class="form-entry">
+            <button type="submit" onclick="validate()">Login</button>
+        </div>
+        
+    </form>
+
+</body>
+</html>
+

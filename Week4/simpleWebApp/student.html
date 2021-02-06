@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--removeIf(production)-->
+    <script src="scripts/students.js"> </script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: left;
+            padding:8px;
+        }
+        td, th  {
+            border: 1px, solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+         }
+
+    </style>
+
+<link rel="stylesheet" type="text/css" href="styles/main.css">
+<link rel="stylesheet" type="text/css" href="styles/tables.css">
+<!--endRemoveIf(production)-->
+
+<title>Page Title</title>
+
+<!-- inject:css -->
+<!-- endinject -->
+
+</head>
+<body>
+    <h1>Student Table</h1>
+    <table style="width: 100%">
+    <thead>
+        <th>Student ID</th>
+        <th>Email Address</th>
+    </thead>
+    <tbody id="studentTable">
+
+    </tbody>
+    </table>
+
+    <div class="links">
+        <span>
+            <a href="login.html">log off</a>
+        </span>
+
+        <span>
+            <a href="student.html">student page</a>
+        </span>
+
+        <span>
+            <a href="instructor.html">instrutor page</a>
+        </span>
+
+    </div>
+    <!-- inject:js -->
+    
+    <!-- endinject -->
+    <script>intializeStudents()</script>
+</body>
+</html>
