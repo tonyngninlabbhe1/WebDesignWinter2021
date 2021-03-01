@@ -13,7 +13,7 @@
                         <th class="table-heading">Last Name</th>
                     </tr>
                     <tbody id="instrutorTable">
-                        <tr v-for="instrutor in instrutors" v-bind:key="instrutor">
+                        <tr v-for="instrutor in instrutors" v-bind:key="instrutor.firstName">
                             <td>{{instrutor.firstName}}</td>
                             <td>{{instrutor.middleName}}</td>
                             <td>{{instrutor.lastName}}</td>

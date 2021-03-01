@@ -11,7 +11,7 @@
                     <th>Email Address</th>
                 </thead>
                 <tbody id="studentTable">
-                        <tr v-for="student in students" v-bind:key="student">
+                        <tr v-for="student in students" v-bind:key="student.studentID">
                             <td>{{ student.studentID }}</td>
                             <td>{{ student.emailAddress }}</td>
                         </tr>
