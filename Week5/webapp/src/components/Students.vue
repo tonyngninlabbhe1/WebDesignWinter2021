@@ -39,7 +39,7 @@ export default {
       return JSON.parse(students);
   }
     
-    var students = '{"students": [{"studentID": "48631", "emailAddress": "mike_@test.com" }, {"studentID": "54613", "emailAddress": "jane_@test.com" }]}';  
+    var students = '[{"studentID": "48631", "emailAddress": "mike_@test.com" }, {"studentID": "54613", "emailAddress": "jane_@test.com" }]';  
 
 </script>
 

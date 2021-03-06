@@ -15,7 +15,7 @@
                     <tbody id="instrutorTable">
                         <tr v-for="instrutor in instrutors" v-bind:key="instrutor.firstName">
                             <td>{{instrutor.firstName}}</td>
-                            <td>{{instrutor.middleName}}</td>
+                            <td>{{instrutor.middleInitial}}</td>
                             <td>{{instrutor.lastName}}</td>
                         </tr>
                     </tbody>
@@ -43,7 +43,7 @@ function getInstrutors() {
     return JSON.parse(instrutors);
 
 }
-var instrutors = '{"instrutors": [{"firstName": "Aaron", "middleInitial": "W." , "lastName": "Whistler" }, {"firstName": "Jake", "middleInitial": "B." , "lastName": "Vandargeer" }]}'
+var instrutors = '[{"firstName": "Aaron", "middleInitial": "W." , "lastName": "Whistler" }, {"firstName": "Jake", "middleInitial": "B." , "lastName": "Vandargeer" }]'
 </script>
 
 <style scoped>
