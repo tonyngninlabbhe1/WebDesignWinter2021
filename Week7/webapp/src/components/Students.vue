@@ -15,8 +15,8 @@
                 </thead>
                 <tbody id="studentTable">
                         <tr v-for="student in students" :key="student.studentID">
-                            <td>{{ student.studentID }}</td>
-                            <td>${{ student.emailAddress }}</td>
+                            <td>{{ student.studentId }}</td>
+                            <td>{{ student.email_address }}</td>
                             <td>
                                 <button v-on:click='displayUpdateStudent(student.studentID)'>Update</button>
                                 <button v-on:click='deleteStudent(student.studentID)'>Delete</button>
