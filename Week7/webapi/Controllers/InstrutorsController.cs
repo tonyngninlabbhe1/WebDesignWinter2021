@@ -19,80 +19,80 @@ namespace webapi.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Ok(getInstrutors());
-        }
+        // [HttpGet]
+        // public IActionResult Get()
+        // {
+        //     return Ok(getInstrutors());
+        // }
 
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)
-        {
-            if (id == 0)
-            {
-                return BadRequest();
-            }
+        // [HttpGet("{id}")]
+        // public IActionResult GetById(int id)
+        // {
+        //     if (id == 0)
+        //     {
+        //         return BadRequest();
+        //     }
             
-            var instrutor = InMemory.Instrutors.FirstOrDefault(s => s.Id == id);
+        //     //var instrutor = InMemory.Instrutors.FirstOrDefault(s => s.Id == id);
 
-            if (instrutor == null)
-            {
-                return NotFound();
-            }
+        //     if (instrutor == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            return Ok(instrutor);
-        }
+        //     return Ok(instrutor);
+        // }
 
-        [HttpPost]
-        public IActionResult Post([FromBody] Instrutor instrutor)
-        {
-            instrutor.Id = getNextId();
+        // [HttpPost]
+        // public IActionResult Post([FromBody] Instrutor instrutor)
+        // {
+        //     instrutor.Id = getNextId();
 
-            InMemory.Instrutors.Add(instrutor);
+        //     InMemory.Instrutors.Add(instrutor);
 
-            return CreatedAtAction(nameof(GetById), new { id = instrutor.Id }, instrutor);
-        }
+        //     return CreatedAtAction(nameof(GetById), new { id = instrutor.Id }, instrutor);
+        // }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdateInstrutor(int id, [FromBody] Instrutor instrutor)
-        {
-            var existingInstrutor = InMemory.Instrutors.FirstOrDefault(s => s.Id == id);
+        // [HttpPut("{id}")]
+        // public IActionResult UpdateInstrutor(int id, [FromBody] Instrutor instrutor)
+        // {
+        //     var existingInstrutor = InMemory.Instrutors.FirstOrDefault(s => s.Id == id);
 
-            if (existingInstrutor == null)
-            {
-                return NotFound();
-            }
+        //     if (existingInstrutor == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            existingInstrutor.FirstName = instrutor.FirstName;
-            existingInstrutor.LastName = instrutor.LastName;
-            existingInstrutor.MiddleInitial = instrutor.MiddleInitial;
+        //     existingInstrutor.FirstName = instrutor.FirstName;
+        //     existingInstrutor.LastName = instrutor.LastName;
+        //     existingInstrutor.MiddleInitial = instrutor.MiddleInitial;
 
-            return NoContent();
-        }
+        //     return NoContent();
+        // }
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteInstrutor(int id)
-        {
-            var existingInstrutor = InMemory.Instrutors.FirstOrDefault(s => s.Id == id);
+        // [HttpDelete("{id}")]
+        // public IActionResult DeleteInstrutor(int id)
+        // {
+        //     var existingInstrutor = InMemory.Instrutors.FirstOrDefault(s => s.Id == id);
 
-            if (existingInstrutor == null)
-            {
-                return NotFound();
-            }
+        //     if (existingInstrutor == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            InMemory.Instrutors.Remove(existingInstrutor);
+        //     InMemory.Instrutors.Remove(existingInstrutor);
 
-            return NoContent();
-        }
+        //     return NoContent();
+        // }
 
-        private List<Instrutor> getInstrutors()
-        {
-            return InMemory.Instrutors;
-        }  
+        // private List<Instrutor> getInstrutors()
+        // {
+        //     return InMemory.Instrutors;
+        // }  
 
-        private int getNextId()
-        {
-            return InMemory.Students.Max(p => p.Id) + 1;
-        }
+        // private int getNextId()
+        // {
+        //     return InMemory.Students.Max(p => p.Id) + 1;
+        // }
     }
 }
