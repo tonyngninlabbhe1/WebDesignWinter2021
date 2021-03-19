@@ -12,75 +12,90 @@ namespace webapi.Controllers
     [Route("api/[controller]")]
     public class StudentController : ControllerBase
     {
-        private readonly SchoolContext _dbContext;
+        private readonly IStudentService _studentService;
+        private readonly ILogger _logger;
 
-        public StudentController(SchoolContext dbContext)
+        public StudentController(IStudentService studentService, ILoggerFactory loggerFactory)
         {
-            _dbContext = dbContext;
+            _studentService = studentService;
+            _logger = loggerFactory.CreateLogger("Controllers.StudentController");
         }
 
         [HttpGet]
         public ActionResult<List<Student>> GetAllStudent()
         {
-            var result = _dbContext.Students.ToList();
-            return Ok(result);
+            _logger.LogDebug("Getting all students");
+
+            return Ok(_studentService.GetAllStudents());
         }
 
-
         [HttpGet("{studentId}")]
-        public ActionResult<Student> GetStudent(int studentId)
+        public ActionResult<StudentModel> GetStudent(int studentId)
         {
-            var student = _dbContext.Students
-                .SingleOrDefault(p => p.StudentId == studentId);
+            var productModel = _studentService.GetStudentById(studentId);
 
-            if (student != null) {
-                return student;
+            if (productModel != null) {
+                return Ok(productModel);
             } else {
                 return NotFound();
             }
         }
 
-        [HttpPost]
-        public ActionResult<Student> AddStudent(Student student)
-        {
-            _dbContext.Students.Add(student);
-            _dbContext.SaveChanges();
+        // [HttpGet("{studentId}")]
+        // public ActionResult<Student> GetStudent(int studentId)
+        // {
+        //     var studentModel = _studentService.GetStudentById(studentId);
+        //     var student = _dbContext.Students
+        //         .SingleOrDefault(p => p.StudentId == studentId);
 
-            // return CreatedAtAction(nameof(GetProduct), new { id = product.ProductId }, product);
+        //     if (student != null) {
+        //         return student;
+        //     } else {
+        //         return NotFound();
+        //     }
+        // }
 
-            return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status201Created);
-        }
+        // [HttpPost]
+        // public ActionResult<Student> AddStudent(Student student)
+        // {
+        //     _dbContext.Students.Add(student);
+        //     _dbContext.SaveChanges();
 
-        [HttpDelete("{studentId}")]
-        public ActionResult DeleteStudent(int studentId)
-        {
-            var student = new Student { StudentId = studentId };
+        //     // return CreatedAtAction(nameof(GetProduct), new { id = product.ProductId }, product);
 
-            _dbContext.Students.Attach(student);
-            _dbContext.Students.Remove(student);
-            _dbContext.SaveChanges();
+        //     return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status201Created);
+        // }
 
-            return Ok();
-        }
+        // [HttpDelete("{studentId}")]
+        // public ActionResult DeleteStudent(int studentId)
+        // {
+        //     var student = new Student { StudentId = studentId };
 
-        [HttpPut("{productId}")]
-        public ActionResult UpdateStudent(int studentId, Student studentUpdate)
-        {
-            var student = _dbContext.Students
-                .SingleOrDefault(p => p.StudentId == studentId);
+        //     _dbContext.Students.Attach(student);
+        //     _dbContext.Students.Remove(student);
+        //     _dbContext.SaveChanges();
 
-            if (student != null)
-            {
-                student.email_address= studentUpdate.email_address;
-                student.StudentId = studentUpdate.StudentId;
+        //     return Ok();
+        // }
 
-                _dbContext.Update(student);
+        // [HttpPut("{productId}")]
+        // public ActionResult UpdateStudent(int studentId, Student studentUpdate)
+        // {
+        //     var student = _dbContext.Students
+        //         .SingleOrDefault(p => p.StudentId == studentId);
 
-                _dbContext.SaveChanges();
-            }
+        //     if (student != null)
+        //     {
+        //         student.email_address= studentUpdate.email_address;
+        //         student.StudentId = studentUpdate.StudentId;
 
-            return NoContent();
-        }
+        //         _dbContext.Update(student);
+
+        //         _dbContext.SaveChanges();
+        //     }
+
+        //     return NoContent();
+        // }
 
      
     }
