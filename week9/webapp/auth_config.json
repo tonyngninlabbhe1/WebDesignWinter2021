@@ -1,0 +1,5 @@
+{
+    "domain": "dev-f9d13o9q.us.auth0.com",
+    "clientId": "1gTELSYRNpxZKYuBruA0rC3muxiZaxai",
+    "audience": "http://localhost:5000/api/"
+}
